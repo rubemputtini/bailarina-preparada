@@ -1,142 +1,82 @@
-import { Users, Dumbbell, GraduationCap, Mic, ArrowRight, Star } from "lucide-react";
+import { useRef } from "react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-
-const mainService = {
-  icon: Users,
-  tag: "Carro-chefe",
-  title: "Clube da Bailarina Preparada",
-  description:
-    "Programa online completo com aulas gravadas e ao vivo, novos treinos e conteúdos todo mês. Plano anual com acesso ilimitado a uma comunidade exclusiva de bailarinas e dançarinas.",
-  highlights: [
-    "Aulas gravadas disponíveis 24h",
-    "Treinos ao vivo mensais",
-    "Novos conteúdos todo mês",
-    "Comunidade exclusiva",
-  ],
-  cta: "Quero fazer parte do Clube",
-  href: "/clube",
-};
-
-const otherServices = [
-  {
-    icon: Dumbbell,
-    title: "Consultoria Online de Musculação",
-    description:
-      "Planejamento de treino personalizado com foco em preparação física para a dança. Evolua com segurança e inteligência.",
-    cta: "Saiba mais",
-    href: "/consultoria",
-  },
-  {
-    icon: GraduationCap,
-    title: "Formação de Profissionais",
-    description:
-      "Capacitação para educadores físicos que desejam atuar com preparação física para dança e ballet.",
-    cta: "Saiba mais",
-    href: "/formacao",
-  },
-  {
-    icon: Mic,
-    title: "Workshops e Palestras",
-    description:
-      "Eventos presenciais e online sobre performance, saúde e preparação física para dançarinas e profissionais da área.",
-    cta: "Saiba mais",
-    href: "/workshops",
-  },
-];
+import { ImageWithPlaceholder } from "@/components/ui/ImageWithPlaceholder";
+import { services } from "@/data/services";
 
 export function ServicesSection() {
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  function scroll(direction: 1 | -1) {
+    const track = trackRef.current;
+    if (track) track.scrollBy({ left: direction * track.clientWidth, behavior: "smooth" });
+  }
+
   return (
-    <section id="servicos" className="py-24 px-6" style={{ background: "#302539" }}>
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <span className="text-brand-accent text-sm font-semibold tracking-[0.2em] uppercase">
-            O que oferecemos
-          </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mt-3 mb-4">
-            Nossos Serviços
-          </h2>
-          <p className="text-white/50 max-w-xl mx-auto text-base">
-            Soluções completas para bailarinas, dançarinas e profissionais que
-            querem ir além.
-          </p>
-        </div>
+    <section id="servicos" className="bg-deep py-28">
+      <div className="container-site">
+        <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-2xl">
+            <p className="eyebrow text-accent">O que oferecemos</p>
+            <h2 className="mt-6 font-display text-4xl leading-tight text-white md:text-5xl">
+              Um método, seis <em className="text-accent">possibilidades</em>
+            </h2>
+            <p className="mt-6 leading-relaxed text-white/50">
+              Da bailarina que está começando à escola que quer um diferencial:
+              cada frente da Bailarina Preparada foi criada para um momento
+              diferente da sua jornada.
+            </p>
+          </div>
 
-        <div
-          className="rounded-3xl p-8 md:p-12 mb-8 relative overflow-hidden"
-          style={{ background: "#403b4d" }}
-        >
-          <div
-            className="absolute top-0 right-0 w-80 h-80 rounded-full opacity-10 blur-3xl pointer-events-none"
-            style={{ background: "#b89fd4" }}
-          />
-
-          <div className="relative z-10 flex flex-col md:flex-row md:items-start gap-8">
-            <div className="flex-1">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="flex items-center gap-1.5 bg-brand-accent/20 text-brand-accent text-xs font-semibold px-3 py-1 rounded-full">
-                  <Star size={12} fill="currentColor" /> {mainService.tag}
-                </span>
-              </div>
-
-              <div className="flex items-center gap-4 mb-5">
-                <div className="w-14 h-14 rounded-2xl bg-brand-accent/20 flex items-center justify-center flex-shrink-0">
-                  <mainService.icon size={28} className="text-brand-accent" />
-                </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white">
-                  {mainService.title}
-                </h3>
-              </div>
-
-              <p className="text-white/60 text-base md:text-lg leading-relaxed mb-8 max-w-2xl">
-                {mainService.description}
-              </p>
-
-              <Link
-                to={mainService.href}
-                className="inline-flex items-center gap-2 bg-brand-accent text-brand-deep px-7 py-3.5 rounded-full font-semibold text-sm hover:bg-white transition-colors duration-200"
-              >
-                {mainService.cta}
-                <ArrowRight size={16} />
-              </Link>
-            </div>
-
-            <div className="flex flex-col gap-3 md:min-w-60">
-              {mainService.highlights.map((item) => (
-                <div key={item} className="flex items-center gap-3">
-                  <span className="w-5 h-5 rounded-full bg-brand-accent/30 flex items-center justify-center flex-shrink-0">
-                    <span className="w-2 h-2 rounded-full bg-brand-accent block" />
-                  </span>
-                  <span className="text-white/70 text-sm">{item}</span>
-                </div>
-              ))}
-            </div>
+          <div className="flex gap-3">
+            <button
+              onClick={() => scroll(-1)}
+              aria-label="Serviços anteriores"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:border-accent hover:text-accent"
+            >
+              <ArrowLeft size={18} />
+            </button>
+            <button
+              onClick={() => scroll(1)}
+              aria-label="Próximos serviços"
+              className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 text-white transition-colors hover:border-accent hover:text-accent"
+            >
+              <ArrowRight size={18} />
+            </button>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {otherServices.map((service) => (
-            <div
-              key={service.title}
-              className="rounded-2xl p-8 flex flex-col group hover:ring-1 hover:ring-brand-accent/40 transition-all duration-300"
-              style={{ background: "#403b4d" }}
+        <div
+          ref={trackRef}
+          className="no-scrollbar mt-14 -mx-6 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-px-6 px-6 pb-2"
+        >
+          {services.map((service) => (
+            <article
+              key={service.slug}
+              className="flex w-[85%] shrink-0 snap-start flex-col bg-paper text-deep sm:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)]"
             >
-              <div className="w-12 h-12 rounded-xl bg-brand-accent/20 flex items-center justify-center mb-6">
-                <service.icon size={22} className="text-brand-accent" />
+              <div className="aspect-[4/3] overflow-hidden bg-paper-deep">
+                <ImageWithPlaceholder
+                  src={service.image}
+                  alt={service.title}
+                  className="h-full w-full"
+                />
               </div>
 
-              <h3 className="text-lg font-bold text-white mb-3">{service.title}</h3>
-
-              <p className="text-white/55 text-sm leading-relaxed flex-1 mb-6">
-                {service.description}
-              </p>
-
-              <Link
-                to={service.href}
-                className="inline-flex items-center gap-1.5 text-brand-accent text-sm font-semibold hover:gap-3 transition-all duration-200"
-              >
-                {service.cta} <ArrowRight size={15} />
-              </Link>
-            </div>
+              <div className="flex flex-1 flex-col p-8 text-center">
+                <p className="eyebrow text-mid">{service.kicker}</p>
+                <h3 className="mt-4 font-display text-2xl">{service.title}</h3>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-deep/60">
+                  {service.description}
+                </p>
+                <Link
+                  to={service.slug}
+                  className="mx-auto mt-8 inline-flex items-center gap-2 rounded-full border border-deep/25 px-7 py-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-deep transition-colors duration-300 hover:border-deep hover:bg-deep hover:text-white"
+                >
+                  Saiba mais
+                </Link>
+              </div>
+            </article>
           ))}
         </div>
       </div>

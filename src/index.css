@@ -1,61 +1,49 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Playfair Display", ui-serif, Georgia, serif;
 
-@theme inline {
-  --font-sans: "Poppins", sans-serif;
-
-  --color-brand-deep: #302539;
-  --color-brand-mid: #403b4d;
-  --color-brand-light: #5c5370;
-  --color-brand-accent: #b89fd4;
-  --color-brand-white: #ffffff;
-
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
+  /* Marca — violeta profundo dominante, lavanda como destaque */
+  --color-ink: #171021;
+  --color-deep: #241833;
+  --color-deep-soft: #2f2144;
+  --color-mid: #4b3a6a;
+  --color-accent: #b7a2de;
+  --color-accent-soft: #dbcff1;
+  --color-paper: #f7f5fb;
+  --color-paper-deep: #eee9f6;
 }
 
-:root {
-  --radius: 0.625rem;
-  --background: #302539;
-  --foreground: #ffffff;
-  --card: #403b4d;
-  --card-foreground: #ffffff;
-  --popover: #403b4d;
-  --popover-foreground: #ffffff;
-  --primary: #b89fd4;
-  --primary-foreground: #302539;
-  --secondary: #5c5370;
-  --secondary-foreground: #ffffff;
-  --muted: #4a4358;
-  --muted-foreground: #c4b8d4;
-  --accent: #b89fd4;
-  --accent-foreground: #302539;
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: rgba(255,255,255,0.1);
-  --input: rgba(255,255,255,0.1);
-  --ring: #b89fd4;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-deep text-white font-sans antialiased;
+  }
+  ::selection {
+    @apply bg-accent text-ink;
+  }
+}
+
+@layer components {
+  /* Rótulo editorial acima de títulos */
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-[0.35em];
+  }
+  .container-site {
+    @apply mx-auto w-full max-w-6xl px-6;
+  }
+}
+
+/* Esconde a barra de rolagem do carrossel mantendo o scroll */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 @keyframes marquee {
@@ -63,18 +51,13 @@
   to   { transform: translateX(-50%); }
 }
 .animate-marquee {
-  animation: marquee 18s linear infinite;
+  animation: marquee 28s linear infinite;
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  html {
-    scroll-behavior: smooth;
-  }
-  body {
-    @apply bg-background text-foreground;
-    font-family: "Poppins", sans-serif;
-  }
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
 }

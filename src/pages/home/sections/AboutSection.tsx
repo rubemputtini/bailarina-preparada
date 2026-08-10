@@ -1,88 +1,83 @@
-import isabellaSrc from "../../../app/assets/isabella.jpg";
+import { FlaskConical, Heart, Target } from "lucide-react";
+import isabellaSrc from "@/assets/sobre-mim-isabella.jpg";
 
-const stats = [
-  { value: "+500", label: "bailarinas preparadas" },
-  { value: "#1", label: "plataforma do Brasil" },
-  { value: "4", label: "serviços especializados" },
+const pillars = [
+  {
+    icon: Target,
+    title: "Especificidade",
+    text: "Treinos desenhados para as demandas reais do ballet, não adaptações genéricas de academia.",
+  },
+  {
+    icon: FlaskConical,
+    title: "Ciência aplicada",
+    text: "Fisiologia, periodização e prevenção de lesões traduzidas para a rotina de aulas, ensaios e palcos.",
+  },
+  {
+    icon: Heart,
+    title: "Acolhimento",
+    text: "Uma linguagem que entende o universo artístico e respeita o corpo e a história de cada bailarina.",
+  },
 ];
 
 export function AboutSection() {
   return (
-    <section id="sobre" className="py-24 px-6 overflow-hidden" style={{ background: "#403b4d" }}>
-      <div className="max-w-6xl mx-auto">
-
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-
-          <div className="relative flex justify-center md:justify-start">
-            <div
-              className="absolute inset-0 rounded-3xl blur-3xl opacity-20 pointer-events-none"
-              style={{ background: "#b89fd4" }}
+    <section id="sobre" className="bg-paper py-28 text-deep">
+      <div className="container-site">
+        <div className="grid items-start gap-16 lg:grid-cols-2">
+          <div className="relative mx-auto w-full max-w-md lg:sticky lg:top-32">
+            <div className="absolute -top-5 -left-5 h-full w-full rounded-none border border-accent" />
+            <img
+              src={isabellaSrc}
+              alt="Isabella Souza, fundadora da Bailarina Preparada"
+              className="relative aspect-[4/5] w-full object-cover"
             />
-            <div className="relative w-full max-w-sm">
-              <div
-                className="absolute -top-4 -left-4 w-full h-full rounded-3xl"
-                style={{ background: "rgba(184,159,212,0.15)", border: "1px solid rgba(184,159,212,0.2)" }}
-              />
-              <img
-                src={isabellaSrc}
-                alt="Isabella Souza — fundadora da Bailarina Preparada"
-                className="relative z-10 w-full rounded-3xl object-cover aspect-square"
-                style={{ boxShadow: "0 32px 64px rgba(0,0,0,0.4)" }}
-              />
-              <div
-                className="absolute -bottom-5 -right-5 z-20 rounded-2xl px-5 py-3 flex flex-col items-center"
-                style={{ background: "#302539", border: "1px solid rgba(184,159,212,0.25)" }}
-              >
-                <span className="text-2xl font-bold text-white">+500</span>
-                <span className="text-brand-accent text-xs font-medium text-center leading-tight">bailarinas<br />preparadas</span>
-              </div>
-            </div>
+            <p className="mt-6 text-sm text-deep/50">
+              Isabella Souza — fundadora da Bailarina Preparada
+            </p>
           </div>
 
           <div>
-            <span className="text-brand-accent text-sm font-semibold tracking-[0.2em] uppercase">
-              Quem somos
-            </span>
-
-            <h2 className="text-3xl md:text-4xl font-bold text-white mt-3 mb-2">
-              Isabella Souza
+            <p className="eyebrow text-mid">Quem somos</p>
+            <h2 className="mt-6 font-display text-4xl leading-tight md:text-5xl">
+              A ciência do treino,
+              <br />a sensibilidade da <em>dança</em>
             </h2>
-            <p className="text-brand-accent text-base font-medium mb-6">
-              Fundadora da Bailarina Preparada
-            </p>
 
-            <div className="space-y-4 text-white/60 text-base leading-relaxed mb-10">
+            <div className="mt-8 space-y-5 leading-relaxed text-deep/70">
               <p>
-                A <strong className="text-white font-semibold">Bailarina Preparada</strong> nasceu da
-                missão de transformar a forma como bailarinas e dançarinas se preparam fisicamente —
-                com ciência, inteligência e respeito às especificidades da dança.
+                A Bailarina Preparada nasceu para unir dois mundos que sempre
+                caminharam separados: o treinamento físico baseado em ciência e
+                a realidade de quem começa a dançar adulta.
               </p>
               <p>
-                Isabella Souza é profissional de educação física especializada em preparação física
-                para a dança, criadora da maior plataforma online do Brasil voltada para bailarinas.
-                Com uma metodologia própria, ela une musculação, mobilidade e condicionamento ao
-                universo artístico da dança.
+                Fundada por Isabella Souza, profissional de educação física
+                especializada em preparação física para a dança, construímos um
+                método próprio, aplicado com mais de 500 bailarinas, que une
+                treino de força, flexibilidade e condicionamento às exigências
+                técnicas do ballet clássico.
               </p>
               <p>
-                Hoje, a Bailarina Preparada atende bailarinas, dançarinas e profissionais da educação
-                física em todo o país, com programas online, consultorias e formações especializadas.
+                Hoje, a Bailarina Preparada é a plataforma de referência no
+                Brasil no seu nicho, atendendo bailarinas adultas, professores
+                de dança e profissionais de educação física que desejam atuar
+                como preparadores físicos.
               </p>
             </div>
 
-            <div className="grid grid-cols-3 gap-4">
-              {stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="rounded-2xl p-4 text-center"
-                  style={{ background: "rgba(48,37,57,0.6)", border: "1px solid rgba(184,159,212,0.15)" }}
-                >
-                  <span className="block text-2xl font-bold text-white">{stat.value}</span>
-                  <span className="text-white/50 text-xs leading-tight mt-1 block">{stat.label}</span>
+            <div className="mt-12 space-y-8 border-t border-deep/10 pt-10">
+              {pillars.map((p) => (
+                <div key={p.title} className="flex gap-6">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-accent text-mid">
+                    <p.icon size={20} />
+                  </span>
+                  <div>
+                    <h3 className="font-display text-xl">{p.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-deep/60">{p.text}</p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
-
         </div>
       </div>
     </section>

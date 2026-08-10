@@ -1,70 +1,69 @@
-import { ArrowDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/Button";
+import heroSrc from "@/assets/hero-home.jpeg";
+
+const keywords = ["Força", "Flexibilidade", "Prevenção de lesões", "Performance"];
 
 export function HeroSection() {
   return (
-    <section
-      id="inicio"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{
-        background: "linear-gradient(160deg, #403b4d -20%, #302539 80%)",
-      }}
-    >
-      <div
-        className="absolute top-1/4 right-0 w-96 h-96 rounded-full opacity-10 blur-3xl pointer-events-none"
-        style={{ background: "#b89fd4" }}
-      />
-      <div
-        className="absolute bottom-0 left-0 w-72 h-72 rounded-full opacity-10 blur-3xl pointer-events-none"
-        style={{ background: "#b89fd4" }}
-      />
-
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center pt-24 pb-20">
-        <span className="inline-block text-brand-accent text-sm font-semibold tracking-[0.2em] uppercase mb-6">
-          Preparação Física para a Dança
-        </span>
-
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
-          Seu corpo pronto{" "}
-          <span
-            className="block"
-            style={{
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundImage: "linear-gradient(90deg, #b89fd4, #ffffff)",
-              backgroundClip: "text",
-            }}
-          >
-            para dançar mais
-          </span>
-        </h1>
-
-        <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-          Treinos, aulas e consultorias desenvolvidas especialmente para bailarinas
-          e dançarinas que querem evoluir com segurança e performance.
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="#servicos"
-            className="bg-brand-accent text-brand-deep px-8 py-4 rounded-full font-semibold text-base hover:bg-white transition-colors duration-200"
-          >
-            Conhecer os serviços
-          </a>
-          <a
-            href="#sobre"
-            className="border border-white/30 text-white px-8 py-4 rounded-full font-medium text-base hover:border-white/70 hover:bg-white/5 transition-all duration-200"
-          >
-            Sobre a Bailarina Preparada
-          </a>
+    <section className="relative flex min-h-screen items-center overflow-hidden bg-deep">
+      {/* Mobile: a foto aparece quase inteira, ancorada na base, atrás de um véu leve */}
+      <div className="absolute inset-x-0 bottom-0 md:hidden">
+        <div className="relative left-1/2 w-[150%] -translate-x-1/2">
+          <img src={heroSrc} alt="" className="w-full" />
         </div>
+        <div className="absolute inset-0 bg-deep/45" />
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-deep to-transparent" />
+      </div>
 
-        <a
-          href="#servicos"
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/40 hover:text-white/70 transition-colors animate-bounce"
-          aria-label="Rolar para baixo"
-        >
-          <ArrowDown size={24} />
-        </a>
+      {/* Foto de fundo ancorada à direita em telas médias+ */}
+      <div className="absolute inset-0 left-[42%] hidden md:block">
+        <img
+          src={heroSrc}
+          alt=""
+          className="h-full w-full object-cover object-[60%_20%]"
+        />
+        {/* Véus que fundem a foto ao fundo roxo — o texto parece parte da imagem */}
+        <div className="absolute inset-0 bg-deep/15" />
+        <div className="absolute inset-0 bg-gradient-to-r from-deep from-5% via-deep/45 via-40% to-deep/10" />
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-deep to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-deep/70 to-transparent" />
+      </div>
+
+      <div className="container-site relative z-10 pt-36 pb-16 md:pb-20">
+        <div className="max-w-xl animate-fade-up">
+          <p className="eyebrow text-accent">Preparação física para a dança</p>
+
+          <h1 className="mt-8 font-display text-5xl leading-[1.08] text-white md:text-6xl lg:text-7xl">
+            Seu corpo <em className="text-accent">preparado</em> para dançar mais e melhor
+          </h1>
+
+          <p className="mt-8 max-w-md text-lg leading-relaxed text-white/70">
+            Treinos desenvolvidos especialmente para bailarinas adultas que
+            querem evoluir com segurança.
+          </p>
+
+          <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap lg:w-max lg:flex-nowrap">
+            <Button to="/#servicos">
+              Conhecer os serviços
+              <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
+            </Button>
+            <Button variant="outline" to="/#sobre">
+              Sobre a Bailarina Preparada
+            </Button>
+          </div>
+
+          <div className="mt-16 flex flex-wrap items-center gap-x-4 gap-y-2">
+            {keywords.map((word, i) => (
+              <span key={word} className="flex items-center gap-4">
+                <span className="font-display text-lg italic text-white/45">{word}</span>
+                {i < keywords.length - 1 && (
+                  <span className="h-1 w-1 rounded-full bg-accent/50" />
+                )}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

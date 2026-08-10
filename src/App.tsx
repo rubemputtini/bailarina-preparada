@@ -6,11 +6,13 @@ import { router } from "./app/router";
 function App() {
   return (
     <HelmetProvider>
-      <Suspense fallback={
-        <div className="min-h-screen flex items-center justify-center" style={{ background: "#302539" }}>
-          <div className="w-8 h-8 rounded-full border-2 border-brand-accent border-t-transparent animate-spin" />
-        </div>
-      }>
+      <Suspense
+        fallback={
+          <div className="flex min-h-screen items-center justify-center bg-deep">
+            <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent border-t-transparent" />
+          </div>
+        }
+      >
         <RouterProvider router={router} />
       </Suspense>
     </HelmetProvider>

@@ -1,35 +1,46 @@
+import { AnimatedCheck, CHECK_STAGGER_MS } from "@/components/ui/AnimatedCheck";
+import { useInView } from "@/hooks/useInView";
 import { painPoints } from "@/data/clube";
+import { cn } from "@/lib/utils";
 
 export function PainPointsSection() {
-  return (
-    <section className="py-28 px-6" style={{ background: "#302539" }}>
-      <div className="max-w-4xl mx-auto">
-        <p className="text-white/30 text-xs font-bold tracking-[0.3em] uppercase mb-12">
-          Você se identifica?
-        </p>
+  const [listRef, checked] = useInView<HTMLDivElement>();
 
-        <div className="space-y-0">
-          {painPoints.map((point) => (
+  return (
+    <section className="bg-paper py-28 text-deep">
+      <div className="container-site max-w-4xl">
+        <p className="eyebrow text-mid">Você se identifica?</p>
+
+        <div ref={listRef} className="mt-12">
+          {painPoints.map((point, i) => (
             <div
               key={point}
-              className="group flex items-start gap-6 py-7 border-b border-white/[0.06] hover:border-white/20 transition-colors duration-300 cursor-default"
+              className="flex items-center gap-8 border-b border-deep/10 py-8"
             >
-              <span
-                className="w-6 h-6 rounded-full border flex-shrink-0 mt-1 transition-colors duration-300"
-                style={{ borderColor: "rgba(184,159,212,0.3)" }}
-              />
-              <p className="text-white/50 text-xl md:text-2xl font-light leading-snug group-hover:text-white/80 transition-colors duration-300">
+              <AnimatedCheck checked={checked} delayMs={i * CHECK_STAGGER_MS} />
+              <p
+                style={{ transitionDelay: `${i * CHECK_STAGGER_MS}ms` }}
+                className={cn(
+                  "font-display text-2xl leading-snug transition-colors duration-700 md:text-3xl",
+                  checked ? "text-deep/85" : "text-deep/35"
+                )}
+              >
                 {point}
               </p>
             </div>
           ))}
         </div>
 
-        <div className="mt-16 pt-12 border-t border-white/10">
-          <p className="text-2xl md:text-3xl font-bold text-white leading-snug max-w-2xl">
-            Se você marcou qualquer um desses — o Clube foi criado exatamente para você.
-          </p>
-        </div>
+        <p
+          style={{ transitionDelay: `${painPoints.length * CHECK_STAGGER_MS + 200}ms` }}
+          className={cn(
+            "mt-16 max-w-3xl font-display text-3xl leading-snug transition-all duration-700 md:text-4xl",
+            checked ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+          )}
+        >
+          Se você se reconheceu em qualquer uma dessas frases, o Clube foi
+          criado <em className="text-mid">exatamente</em> para você.
+        </p>
       </div>
     </section>
   );

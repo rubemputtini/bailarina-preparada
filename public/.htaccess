@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Serve arquivos e pastas reais normalmente (assets, imagens, robots.txt, sitemap.xml)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # Qualquer outra rota cai no index.html — o react-router decide o que renderizar
+  RewriteRule . /index.html [L]
+</IfModule>
