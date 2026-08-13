@@ -4,6 +4,9 @@ import depCamila from "@/assets/depoimento-camila.jpg";
 import depFabia from "@/assets/depoimento-fabia.jpg";
 import depLuana from "@/assets/depoimento-luana.jpg";
 import depMaria from "@/assets/depoimento-maria.jpg";
+import depIsabela from "@/assets/depoimento-isabela.jpg";
+import depPaula from "@/assets/depoimento-paula.jpg";
+import depGabrielle from "@/assets/depoimento-gabrielle.jpg";
 
 export const YOUTUBE_ID = "ABsLsyHNofA";
 
@@ -78,12 +81,21 @@ const isabelaFelicio: Testimonial = {
   quote: "Minha experiência com o clube ao longo desses anos sempre foi positiva. A plataforma é organizada, tem uma boa variedade de treinos e o suporte é excelente. Tive muitos bons resultados seguindo os treinos propostos, como ganho de massa muscular e flexibilidade, que me ajudaram a evoluir não só na dança como em outras atividades.",
   name: "Isabela Felício",
   role: "Aluna do Clube",
+  photo: depIsabela,
 };
 
 const paulaMoura: Testimonial = {
   quote: "Comecei há pouco tempo a treinar no clube, mas já me surpreendi positivamente com os resultados. O planejamento que recebi cabe perfeitamente no meu dia a dia, com treinos curtos e muito efetivos. Depois de 2 semanas seguindo o cronograma à risca, já me sinto mais forte e vejo o resultado na sala de balé: mais balance, saltando melhor, mais segurança nos giros… enfim, incrível! Bella, parabéns pelo seu trabalho, sério e confiável!",
   name: "Paula Moura",
   role: "Aluna do Clube",
+  photo: depPaula,
+};
+
+const gabrielle: Testimonial = {
+  quote: "Treino com a Bella há quase 1 ano, mas senti a diferença logo nas primeiras semanas. Fortalecer para o ballet tem reduzido dores e desconfortos, além de me permitir aguentar longos ensaios com mais resistência! Gosto muito de treinar com a Bella porque são treinos totalmente personalizados e feitos para mim sob medida, se adaptando à minha rotina e me ajudando a melhorar no ballet!",
+  name: "Gabrielle Ferreira",
+  role: "Aluna da Consultoria Individual",
+  photo: depGabrielle,
 };
 
 const luana: Testimonial = {
@@ -107,7 +119,7 @@ export const testimonials: Testimonial[] = [isabelaFelicio, fabia, paulaMoura, l
 export const homeTestimonials: Testimonial[] = [anaLia, andrezza, fabia, camila];
 
 // Página da Consultoria Individual
-export const consultoriaTestimonials: Testimonial[] = [mariaEduarda, andrezza];
+export const consultoriaTestimonials: Testimonial[] = [mariaEduarda, andrezza, gabrielle];
 
 export const faqs = [
   {

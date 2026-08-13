@@ -7,6 +7,8 @@ import { ServiceCta } from "@/components/service/ServiceCta";
 import { Button } from "@/components/ui/Button";
 import { TestimonialCard } from "@/components/ui/TestimonialCard";
 import { consultoriaTestimonials } from "@/data/clube";
+import { useIsBrazil } from "@/hooks/useIsBrazil";
+import { cn } from "@/lib/utils";
 import { BASE_URL, whatsappLink } from "@/constants/urls";
 import cardConsultoria from "@/assets/card-consultoria.jpg";
 
@@ -41,19 +43,25 @@ const steps = [
 const plans = [
   {
     name: "1 plano de treinos",
-    price: "180",
-    message: "Olá! Tenho interesse na Consultoria Online (1 plano de treinos). Pode me passar mais informações?",
+    priceBRL: "180",
+    priceEUR: "35",
+    linkBRL: "https://pages.mfitpersonal.com.br/index?acao=page&tipo=2&buyPage=59814&page=59813",
+    messageEUR: "Olá! Tenho interesse na Consultoria Online (1 plano de treinos). Pode me passar mais informações?",
     featured: false,
   },
   {
     name: "3 planos de treinos",
-    price: "450",
-    message: "Olá! Tenho interesse na Consultoria Online (3 planos de treinos). Pode me passar mais informações?",
+    priceBRL: "450",
+    priceEUR: "90",
+    linkBRL: "https://pages.mfitpersonal.com.br/index?acao=page&tipo=2&buyPage=59815&page=59813",
+    messageEUR: "Olá! Tenho interesse na Consultoria Online (3 planos de treinos). Pode me passar mais informações?",
     featured: true,
   },
 ];
 
 export default function ConsultoriaPage() {
+  const isBrazil = useIsBrazil();
+
   return (
     <>
       <PageHead
@@ -78,8 +86,9 @@ export default function ConsultoriaPage() {
           }
           description="Treinos criados especificamente para o seu corpo, sua rotina e seus objetivos. Com todas as orientações individuais que você precisa para evoluir."
           ctaLabel="Quero minha consultoria"
-          ctaHref={whatsappUrl}
-          note="Atendimento pelo WhatsApp, sem compromisso"
+          ctaHref="#planos"
+          ctaExternal={false}
+          note="Escolha o seu plano abaixo"
         />
 
         <section className="bg-paper py-28 text-deep">
@@ -122,7 +131,7 @@ export default function ConsultoriaPage() {
           ]}
         />
 
-        <section className="bg-ink py-28">
+        <section id="planos" className="bg-ink py-28 scroll-mt-24">
           <div className="container-site max-w-4xl">
             <div className="text-center">
               <p className="eyebrow text-accent">Investimento</p>
@@ -148,13 +157,15 @@ export default function ConsultoriaPage() {
                   )}
                   <h3 className="font-display text-2xl text-white">{plan.name}</h3>
                   <div className="mt-6 flex flex-1 items-baseline gap-2">
-                    <span className="text-lg text-white/50">R$</span>
-                    <span className="font-display text-6xl text-white">{plan.price}</span>
-                    <span className="text-lg text-white/50">,00</span>
+                    <span className="text-lg text-white/50">{isBrazil ? "R$" : "€"}</span>
+                    <span className="font-display text-6xl text-white">
+                      {isBrazil ? plan.priceBRL : plan.priceEUR}
+                    </span>
+                    {isBrazil && <span className="text-lg text-white/50">,00</span>}
                   </div>
                   <Button
                     variant={plan.featured ? "primary" : "outline"}
-                    href={whatsappLink(plan.message)}
+                    href={isBrazil ? plan.linkBRL : whatsappLink(plan.messageEUR)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-10"
@@ -182,13 +193,22 @@ export default function ConsultoriaPage() {
         </section>
 
         <section className="bg-paper pb-28 text-deep">
-          <div className="container-site max-w-4xl">
+          <div className="container-site max-w-6xl">
             <p className="eyebrow text-center text-mid">Depoimentos</p>
             <h2 className="mt-6 text-center font-display text-4xl leading-tight md:text-5xl">
               O que as alunas <em>dizem</em>
             </h2>
 
-            <div className="mt-16 grid gap-px border border-deep/10 bg-deep/10 md:grid-cols-2">
+            <div
+              className={cn(
+                "mt-16 grid gap-px border border-deep/10 bg-deep/10",
+                consultoriaTestimonials.length === 1
+                  ? "mx-auto max-w-xl"
+                  : consultoriaTestimonials.length % 2 === 0
+                    ? "md:grid-cols-2"
+                    : "md:grid-cols-3"
+              )}
+            >
               {consultoriaTestimonials.map((t) => (
                 <TestimonialCard key={t.name} {...t} />
               ))}

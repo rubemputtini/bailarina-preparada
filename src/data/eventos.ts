@@ -7,7 +7,6 @@ import workshopJoinville2024 from "@/assets/workshop-joinville-2024.jpg";
 import workshopJoinville2024_2 from "@/assets/workshop-joinville-2024-2.jpg";
 import workshopSaoPaulo2024 from "@/assets/workshop-sao-paulo-2024.jpg";
 import workshopEspinho from "@/assets/workshop-espinho-2025.jpg";
-import workshopEspinho2025_2 from "@/assets/workshop-espinho-2025-2.jpg";
 import workshopMogiMirim2025 from "@/assets/workshop-mogi-mirim-2025.jpg";
 import workshopPedreira2025 from "@/assets/workshop-pedreira-2025.jpg";
 import workshopSaoJoseDosCampos2026 from "@/assets/workshop-sao-jose-dos-campos-2026.jpg";
@@ -27,7 +26,6 @@ export const eventos: Evento[] = [
   { image: workshopJoinville2024_2, local: "Joinville", date: "2024" },
   { image: workshopSaoPaulo2024, local: "São Paulo", date: "2024" },
   { image: workshopEspinho, local: "Espinho", date: "2025" },
-  { image: workshopEspinho2025_2, local: "Espinho", date: "2025" },
   { image: workshopMogiMirim2025, local: "Mogi Mirim", date: "2025" },
   { image: workshopPedreira2025, local: "Pedreira", date: "2025" },
   { image: workshopSaoJoseDosCampos2026, local: "São José dos Campos", date: "2026" },

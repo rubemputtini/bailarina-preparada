@@ -11,9 +11,9 @@ import { cn } from "@/lib/utils";
 import { BASE_URL, whatsappLink } from "@/constants/urls";
 import cardBpPro from "@/assets/card-bp-pro.jpg";
 
-const listaEsperaUrl = whatsappLink(
-  "Olá! Quero entrar na lista de espera da Turma 3 da Formação. Pode me cadastrar?"
-);
+// Enquanto não há um fluxo de pagamento próprio, a inscrição é feita por este formulário.
+const inscricaoFormUrl =
+  "https://docs.google.com/forms/d/e/1FAIpQLSc7LeEHC6kdY3jYjPjgdmvkDogHaKO6UlXE-vaAjPPyOFUGHA/viewform";
 
 const professorDancaUrl = whatsappLink(
   "Olá! Sou professor(a) de dança e tenho interesse na Formação. Como funciona para o meu caso?"
@@ -60,7 +60,7 @@ export default function FormacaoPage() {
           }
           description="Capacitação completa para profissionais que desejam atuar com preparação física para a dança — unindo conhecimento científico à realidade do universo artístico."
           ctaLabel="Quero estar na próxima turma"
-          ctaHref={listaEsperaUrl}
+          ctaHref={inscricaoFormUrl}
           note="Fale com a equipe e receba os detalhes da próxima turma"
         />
 
@@ -143,7 +143,7 @@ export default function FormacaoPage() {
               </div>
             ) : (
               <div className="mt-12 flex justify-center">
-                <Button variant="ink" href={listaEsperaUrl} target="_blank" rel="noopener noreferrer">
+                <Button variant="ink" href={inscricaoFormUrl} target="_blank" rel="noopener noreferrer">
                   Quero estar na próxima turma
                   <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
                 </Button>
@@ -157,7 +157,7 @@ export default function FormacaoPage() {
           title="Garanta o seu lugar na Turma 3"
           text="Cadastre-se para entrar na lista de espera. Previsão de abertura: 01/09/2026."
           ctaLabel="Entrar na lista de espera"
-          ctaHref={listaEsperaUrl}
+          ctaHref={inscricaoFormUrl}
         />
       </main>
     </>

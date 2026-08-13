@@ -40,7 +40,7 @@ const features = [
   },
 ];
 
-const trainings: { title: string; paragraphs: string[]; image?: string }[] = [
+const trainings: { title: string; paragraphs: string[]; image?: string; link?: string }[] = [
   {
     title: "Preparada para as pontas",
     paragraphs: [
@@ -48,6 +48,7 @@ const trainings: { title: string; paragraphs: string[]; image?: string }[] = [
       "Indicado para quem ainda não dança com pontas ou está começando, este é o treinamento que vai te fazer sentir verdadeiramente preparada para esse momento.",
     ],
     image: cardPreparada,
+    link: "https://go.hotmart.com/U98931093H",
   },
   {
     title: "Pirueta Perfeita",
@@ -57,6 +58,7 @@ const trainings: { title: string; paragraphs: string[]; image?: string }[] = [
       "Em 3 meses, um dos passos mais difíceis do ballet vai deixar de ser um bicho de sete cabeças para você.",
     ],
     image: cardPirueta,
+    link: "https://hotmart.com/pt-br/marketplace/produtos/pirueta-perfeita/R98144192B",
   },
   {
     title: "Definitivamente Flexível",
@@ -66,6 +68,7 @@ const trainings: { title: string; paragraphs: string[]; image?: string }[] = [
       "O programa inclui 30 aulas em formato de desafio, planejamento de rotina personalizado para depois do desafio, o ebook Flexibilidade Descomplicada e o ComboDF, para que você se torne independente nos treinos.",
     ],
     image: cardFlexivel,
+    link: "https://go.hotmart.com/U74651356P",
   },
   {
     title: "Aulas ao Vivo de PBT e Barra no Solo",
@@ -74,6 +77,7 @@ const trainings: { title: string; paragraphs: string[]; image?: string }[] = [
       "Um espaço para praticar, tirar dúvidas em tempo real e evoluir a sua técnica com a orientação direta da Bella.",
     ],
     image: cardPbt,
+    // Sem link de venda: aulas ao vivo, o contato é direto pelo WhatsApp.
   },
 ];
 
@@ -155,9 +159,12 @@ export default function TreinamentosPage() {
                     </div>
                     <Button
                       variant="ink"
-                      href={whatsappLink(
-                        `Olá! Tenho interesse no treinamento "${training.title}". Pode me passar mais informações?`
-                      )}
+                      href={
+                        training.link ??
+                        whatsappLink(
+                          `Olá! Tenho interesse no treinamento "${training.title}". Pode me passar mais informações?`
+                        )
+                      }
                       target="_blank"
                       rel="noopener noreferrer"
                       className="mt-8 self-start"

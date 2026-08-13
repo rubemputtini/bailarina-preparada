@@ -11,10 +11,21 @@ interface ServiceHeroProps {
   description: string;
   ctaLabel?: string;
   ctaHref?: string;
+  /** false para links internos (ex.: âncora "#planos") — evita abrir nova aba. Padrão: true. */
+  ctaExternal?: boolean;
   note?: string;
 }
 
-export function ServiceHero({ breadcrumb, kicker, title, description, ctaLabel, ctaHref, note }: ServiceHeroProps) {
+export function ServiceHero({
+  breadcrumb,
+  kicker,
+  title,
+  description,
+  ctaLabel,
+  ctaHref,
+  ctaExternal = true,
+  note,
+}: ServiceHeroProps) {
   return (
     <section className="relative overflow-hidden bg-deep pt-44 pb-24">
       <GlowBlob className="-top-40 right-[-10%] h-[520px] w-[520px] opacity-[0.14]" />
@@ -36,7 +47,7 @@ export function ServiceHero({ breadcrumb, kicker, title, description, ctaLabel, 
 
         {ctaLabel && ctaHref && (
           <div className="mt-12 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
-            <Button href={ctaHref} target="_blank" rel="noopener noreferrer">
+            <Button href={ctaHref} {...(ctaExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
               {ctaLabel}
               <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
             </Button>
