@@ -3,6 +3,7 @@ import depAndreza from "@/assets/depoimento-andreza.jpg";
 import depCamila from "@/assets/depoimento-camila.jpg";
 import depFabia from "@/assets/depoimento-fabia.jpg";
 import depLuana from "@/assets/depoimento-luana.jpg";
+import depMaria from "@/assets/depoimento-maria.jpg";
 
 export const YOUTUBE_ID = "ABsLsyHNofA";
 
@@ -52,6 +53,13 @@ const anaLia: Testimonial = {
   photo: depAnaLia,
 };
 
+const mariaEduarda: Testimonial = {
+  quote: "Conheci a Bella pelo Instagram e sempre acompanhei o trabalho dela, mas foi só em setembro de 2025 que me tornei aluna da consultoria online. Meu rendimento nas aulas melhorou muito, ganhei muito mais foco nos períodos de apresentação, sempre com os treinos adaptados às necessidades que eu ia percebendo em aula. Comecei no ballet com 23 anos, então sinto que tenho o triplo do trabalho — mas os treinos me ajudam a diminuir esse peso. Já estou ansiosa com os treinos para o espetáculo deste ano!",
+  name: "Maria Eduarda Oliveira Araújo",
+  role: "Aluna da Consultoria Individual",
+  photo: depMaria,
+};
+
 const andrezza: Testimonial = {
   quote: "Minha flexibilidade, força, abdômen, colocação — tudo melhorou. Meus professores notaram em 6 meses. Vi resultados em tudo que me propus a melhorar.",
   name: "Andrezza Carvalho",
@@ -98,6 +106,9 @@ export const testimonials: Testimonial[] = [isabelaFelicio, fabia, paulaMoura, l
 // Página inicial: alunas de diferentes serviços
 export const homeTestimonials: Testimonial[] = [anaLia, andrezza, fabia, camila];
 
+// Página da Consultoria Individual
+export const consultoriaTestimonials: Testimonial[] = [mariaEduarda, andrezza];
+
 export const faqs = [
   {
     q: "Qualquer bailarina pode participar, mesmo iniciante?",
@@ -109,7 +120,7 @@ export const faqs = [
   },
   {
     q: "Preciso de algum equipamento?",
-    a: "A grande maioria dos treinos não exige nenhum equipamento. Alguns conteúdos usam itens simples como faixa elástica ou colchonete — mas tudo é indicado com antecedência.",
+    a: "Utilizamos alguns equipamentos simples, como faixas elásticas e colchonete, por isso recomendamos a aquisição de um kit básico. Mas caso você ainda não tenha, não há problema! Temos uma aula ensinando como substituir esses materiais até que você possa investir nos equipamentos.",
   },
   {
     q: "Como funciona o suporte e a comunidade?",

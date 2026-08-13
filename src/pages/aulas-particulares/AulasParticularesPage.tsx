@@ -220,7 +220,7 @@ export default function AulasParticularesPage() {
         </section>
 
         <ServiceCta
-          title="A atenção que uma turma inteira não consegue te dar"
+          title="Pronta para uma aula pensada só para você?"
           text="Fale com a nossa equipe, conte o seu objetivo e marque a sua primeira aula."
           ctaLabel="Falar no WhatsApp"
           ctaHref={whatsappUrl}

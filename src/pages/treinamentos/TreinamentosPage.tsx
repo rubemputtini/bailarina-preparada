@@ -8,6 +8,10 @@ import { Button } from "@/components/ui/Button";
 import { ImageWithPlaceholder } from "@/components/ui/ImageWithPlaceholder";
 import { BASE_URL, whatsappLink } from "@/constants/urls";
 import cardOutrosTreinamentos from "@/assets/card-outros-treinamentos.jpg";
+import cardPreparada from "@/assets/card-preparada.jpg";
+import cardPirueta from "@/assets/card-pirueta.jpg";
+import cardFlexivel from "@/assets/card-flexivel.jpg";
+import cardPbt from "@/assets/card-pbt.jpg";
 
 const whatsappUrl = whatsappLink(
   "Olá! Tenho interesse nos treinamentos da Bailarina Preparada. Pode me passar mais informações?"
@@ -43,6 +47,7 @@ const trainings: { title: string; paragraphs: string[]; image?: string }[] = [
       "O Preparada para as Pontas fortalece pés, core e pernas de forma específica para a performance nas pontas, com 8 módulos completos: treinos de fortalecimento, estabilidade e mobilidade, biblioteca de exercícios para os pés, planilhas específicas, aulas bônus de meia ponta, liberação miofascial e mobilidade do tendão, além de correções técnicas por Fernanda Ruschel.",
       "Indicado para quem ainda não dança com pontas ou está começando, este é o treinamento que vai te fazer sentir verdadeiramente preparada para esse momento.",
     ],
+    image: cardPreparada,
   },
   {
     title: "Pirueta Perfeita",
@@ -51,6 +56,7 @@ const trainings: { title: string; paragraphs: string[]; image?: string }[] = [
       "Em parceria com a bailarina e professora Fernanda Ruschel, ensinamos corpo e técnica a trabalharem juntos na busca da pirueta perfeita.",
       "Em 3 meses, um dos passos mais difíceis do ballet vai deixar de ser um bicho de sete cabeças para você.",
     ],
+    image: cardPirueta,
   },
   {
     title: "Definitivamente Flexível",
@@ -59,6 +65,15 @@ const trainings: { title: string; paragraphs: string[]; image?: string }[] = [
       "A metodologia é baseada em evidências científicas e combina técnicas de alongamento passivo, ativo e FNP, ensinando a aplicar a flexibilidade de verdade nas aulas e coreografias, e não só para zerar espacates.",
       "O programa inclui 30 aulas em formato de desafio, planejamento de rotina personalizado para depois do desafio, o ebook Flexibilidade Descomplicada e o ComboDF, para que você se torne independente nos treinos.",
     ],
+    image: cardFlexivel,
+  },
+  {
+    title: "Aulas ao Vivo de PBT e Barra no Solo",
+    paragraphs: [
+      "Aulas ao vivo, em grupo, de PBT (Progressing Ballet Technique) e barra no solo — metodologias que trabalham a técnica do ballet fora da posição vertical, fortalecendo o controle corporal, o alinhamento e a consciência de movimento.",
+      "Um espaço para praticar, tirar dúvidas em tempo real e evoluir a sua técnica com a orientação direta da Bella.",
+    ],
+    image: cardPbt,
   },
 ];
 

@@ -5,6 +5,8 @@ import { ServiceHero } from "@/components/service/ServiceHero";
 import { ServiceForWho } from "@/components/service/ServiceForWho";
 import { ServiceCta } from "@/components/service/ServiceCta";
 import { Button } from "@/components/ui/Button";
+import { TestimonialCard } from "@/components/ui/TestimonialCard";
+import { consultoriaTestimonials } from "@/data/clube";
 import { BASE_URL, whatsappLink } from "@/constants/urls";
 import cardConsultoria from "@/assets/card-consultoria.jpg";
 
@@ -176,6 +178,21 @@ export default function ConsultoriaPage() {
               O método Bailarina Preparada inteiramente dedicado a{" "}
               <em className="text-mid">você</em>.
             </p>
+          </div>
+        </section>
+
+        <section className="bg-paper pb-28 text-deep">
+          <div className="container-site max-w-4xl">
+            <p className="eyebrow text-center text-mid">Depoimentos</p>
+            <h2 className="mt-6 text-center font-display text-4xl leading-tight md:text-5xl">
+              O que as alunas <em>dizem</em>
+            </h2>
+
+            <div className="mt-16 grid gap-px border border-deep/10 bg-deep/10 md:grid-cols-2">
+              {consultoriaTestimonials.map((t) => (
+                <TestimonialCard key={t.name} {...t} />
+              ))}
+            </div>
           </div>
         </section>
 

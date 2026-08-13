@@ -28,6 +28,7 @@ const formats = [
 const themes = [
   "Prevenção de lesões na dança",
   "Musculação para bailarinas",
+  "Flexibilidade funcional para a dança",
   "Saúde e bem-estar na dança",
   "Performance e preparação para o palco",
 ];

@@ -18,21 +18,20 @@ const professorDancaUrl = whatsappLink(
   "Olá! Sou professor(a) de dança e tenho interesse na Formação. Como funciona para o meu caso?"
 );
 
-// TODO: textos provisórios — a Isabella ainda vai definir a descrição de cada módulo
 const modules = [
-  { title: "Força", text: "Treinamento de força aplicado às demandas do ballet e da dança." },
-  { title: "Flexibilidade", text: "Desenvolvimento de flexibilidade e mobilidade para a dança." },
-  { title: "Cardio", text: "Condicionamento cardiorrespiratório para a performance." },
-  { title: "Periodização", text: "Como organizar o treinamento ao longo da temporada." },
-  { title: "Avaliação física", text: "Avaliação e acompanhamento da evolução da bailarina." },
+  { title: "Força", text: "Como trabalhar a força muscular aplicada às demandas da dança." },
+  { title: "Flexibilidade", text: "Como prescrever treinos de flexibilidade funcional para a dança." },
+  { title: "Cardio", text: "Como melhorar o condicionamento cardiorrespiratório para a performance." },
+  { title: "Periodização", text: "Como organizar o treinamento ao longo do ano." },
+  { title: "Avaliação física", text: "Como avaliar e acompanhar a evolução dos bailarinos." },
   { title: "Carreira", text: "Como atuar e se posicionar no mercado da dança." },
 ];
 
 const differentials = [
   { label: "Metodologia exclusiva", value: "Método aplicado com mais de 500 bailarinas" },
-  { label: "Teoria e prática", value: "Do conceito à sala de aula" },
+  { label: "Ciência e prática", value: "Do conceito à sala de aula" },
   { label: "Certificação", value: "Certificado de conclusão incluso" },
-  { label: "Materiais de apoio", value: "Protocolos e planilhas prontos para usar" },
+  { label: "Público-alvo", value: "Exclusiva para quem é da Educação Física" },
 ];
 
 export default function FormacaoPage() {
@@ -133,7 +132,7 @@ export default function FormacaoPage() {
             {formacaoTestimonials.length > 0 ? (
               <div className="mt-16 grid gap-px border border-deep/10 bg-deep/10 md:grid-cols-2">
                 {formacaoTestimonials.map((t) => (
-                  <TestimonialCard key={t.name} {...t} role="Profissional formada" />
+                  <TestimonialCard key={t.name} {...t} role={t.role ?? "Profissional formada"} />
                 ))}
               </div>
             ) : (
