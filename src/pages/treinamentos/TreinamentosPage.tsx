@@ -137,17 +137,18 @@ export default function TreinamentosPage() {
                   key={training.title}
                   className="grid overflow-hidden bg-paper text-deep md:grid-cols-[2fr_3fr]"
                 >
-                  <div className="aspect-[4/3] bg-paper-deep md:aspect-auto">
+                  <div className="aspect-video bg-ink md:aspect-auto">
                     <ImageWithPlaceholder
                       src={training.image}
                       alt={training.title}
+                      fit="contain"
                       className="h-full w-full"
                     />
                   </div>
 
                   <div className="flex flex-col p-10 md:p-12">
                     <h3 className="font-display text-3xl">{training.title}</h3>
-                    <div className="mt-4 max-w-xl flex-1 space-y-4 leading-relaxed text-deep/60">
+                    <div className="mt-4 max-w-xl space-y-4 leading-relaxed text-deep/60">
                       {training.paragraphs.map((paragraph) => (
                         <p key={paragraph}>{paragraph}</p>
                       ))}

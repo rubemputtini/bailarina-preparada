@@ -5,7 +5,7 @@ interface AvatarProps {
 
 export function Avatar({ name, photo }: AvatarProps) {
   if (photo) {
-    return <img src={photo} alt={name} className="h-11 w-11 rounded-full object-cover" />;
+    return <img src={photo} alt={name} className="h-11 w-11 shrink-0 rounded-full object-cover" />;
   }
   const initials = name
     .split(" ")
@@ -13,7 +13,7 @@ export function Avatar({ name, photo }: AvatarProps) {
     .slice(0, 2)
     .join("");
   return (
-    <span className="flex h-11 w-11 items-center justify-center rounded-full bg-accent font-display text-sm text-ink">
+    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent font-display text-sm text-ink">
       {initials}
     </span>
   );

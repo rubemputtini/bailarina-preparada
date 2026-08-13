@@ -7,6 +7,7 @@ import { ServiceCta } from "@/components/service/ServiceCta";
 import { Button } from "@/components/ui/Button";
 import { TestimonialCard } from "@/components/ui/TestimonialCard";
 import { formacaoTestimonials } from "@/data/formacao";
+import { cn } from "@/lib/utils";
 import { BASE_URL, whatsappLink } from "@/constants/urls";
 import cardBpPro from "@/assets/card-bp-pro.jpg";
 
@@ -130,7 +131,12 @@ export default function FormacaoPage() {
             </div>
 
             {formacaoTestimonials.length > 0 ? (
-              <div className="mt-16 grid gap-px border border-deep/10 bg-deep/10 md:grid-cols-2">
+              <div
+                className={cn(
+                  "mt-16 grid gap-px border border-deep/10 bg-deep/10",
+                  formacaoTestimonials.length > 1 ? "md:grid-cols-2" : "mx-auto max-w-xl"
+                )}
+              >
                 {formacaoTestimonials.map((t) => (
                   <TestimonialCard key={t.name} {...t} role={t.role ?? "Profissional formada"} />
                 ))}
