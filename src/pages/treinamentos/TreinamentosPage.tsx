@@ -48,7 +48,7 @@ const trainings: { title: string; paragraphs: string[]; image?: string; link?: s
       "Indicado para quem ainda não dança com pontas ou está começando, este é o treinamento que vai te fazer sentir verdadeiramente preparada para esse momento.",
     ],
     image: cardPreparada,
-    link: "https://go.hotmart.com/U98931093H",
+    link: "https://hotmart.com/pt-br/marketplace/produtos/preparada-para-as-pontas/U98931093H",
   },
   {
     title: "Pirueta Perfeita",
@@ -68,7 +68,7 @@ const trainings: { title: string; paragraphs: string[]; image?: string; link?: s
       "O programa inclui 30 aulas em formato de desafio, planejamento de rotina personalizado para depois do desafio, o ebook Flexibilidade Descomplicada e o ComboDF, para que você se torne independente nos treinos.",
     ],
     image: cardFlexivel,
-    link: "https://go.hotmart.com/U74651356P",
+    link: "https://hotmart.com/pt-br/marketplace/produtos/definitivamente-flexivel-2-0/U74651356P",
   },
   {
     title: "Aulas ao Vivo de PBT e Barra no Solo",

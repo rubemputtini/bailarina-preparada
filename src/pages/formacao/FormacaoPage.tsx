@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 import { BASE_URL, whatsappLink } from "@/constants/urls";
 import cardBpPro from "@/assets/card-bp-pro.jpg";
 
-const checkoutUrl = "https://go.hotmart.com/M101608346L";
+const hotmartUrl = "https://hotmart.com/pt-br/marketplace/produtos/bailarina-preparada-pro/M101608346L";
 const waitlistFormUrl =
   "https://docs.google.com/forms/d/e/1FAIpQLSc7LeEHC6kdY3jYjPjgdmvkDogHaKO6UlXE-vaAjPPyOFUGHA/viewform";
 
@@ -42,7 +42,7 @@ const differentials = [
 
 export default function FormacaoPage() {
   const [enrollmentOpen] = useState(() => Date.now() <= enrollmentDeadline.getTime());
-  const ctaHref = enrollmentOpen ? checkoutUrl : waitlistFormUrl;
+  const ctaHref = enrollmentOpen ? hotmartUrl : waitlistFormUrl;
   const ctaLabel = enrollmentOpen ? "Garantir minha vaga" : "Quero estar na próxima turma";
 
   return (
@@ -171,7 +171,7 @@ export default function FormacaoPage() {
             title="Garanta o seu lugar na Turma 3"
             text="Inscrições abertas até o dia 11/10/2026!"
             ctaLabel="Garantir minha vaga"
-            ctaHref={checkoutUrl}
+            ctaHref={hotmartUrl}
           />
         ) : (
           <ServiceCta
