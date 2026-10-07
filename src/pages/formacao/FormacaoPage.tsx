@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { PageHead } from "@/components/PageHead";
 import { serviceSchema } from "@/constants/structuredData";
@@ -11,9 +12,13 @@ import { cn } from "@/lib/utils";
 import { BASE_URL, whatsappLink } from "@/constants/urls";
 import cardBpPro from "@/assets/card-bp-pro.jpg";
 
-// Enquanto não há um fluxo de pagamento próprio, a inscrição é feita por este formulário.
-const inscricaoFormUrl =
+const checkoutUrl = "https://go.hotmart.com/M101608346L";
+const waitlistFormUrl =
   "https://docs.google.com/forms/d/e/1FAIpQLSc7LeEHC6kdY3jYjPjgdmvkDogHaKO6UlXE-vaAjPPyOFUGHA/viewform";
+
+// Até o fim deste prazo (horário de Brasília) a página vende a Turma 3;
+// depois, volta automaticamente para a lista de espera da próxima turma.
+const enrollmentDeadline = new Date("2026-10-11T23:59:59-03:00");
 
 const professorDancaUrl = whatsappLink(
   "Olá! Sou professor(a) de dança e tenho interesse na Formação. Como funciona para o meu caso?"
@@ -36,6 +41,10 @@ const differentials = [
 ];
 
 export default function FormacaoPage() {
+  const [enrollmentOpen] = useState(() => Date.now() <= enrollmentDeadline.getTime());
+  const ctaHref = enrollmentOpen ? checkoutUrl : waitlistFormUrl;
+  const ctaLabel = enrollmentOpen ? "Garantir minha vaga" : "Quero estar na próxima turma";
+
   return (
     <>
       <PageHead
@@ -59,9 +68,13 @@ export default function FormacaoPage() {
             </>
           }
           description="Capacitação completa para profissionais que desejam atuar com preparação física para a dança — unindo conhecimento científico à realidade do universo artístico."
-          ctaLabel="Quero estar na próxima turma"
-          ctaHref={inscricaoFormUrl}
-          note="Fale com a equipe e receba os detalhes da próxima turma"
+          ctaLabel={ctaLabel}
+          ctaHref={ctaHref}
+          note={
+            enrollmentOpen
+              ? "Inscrições abertas até 11/10/2026"
+              : "Fale com a equipe e receba os detalhes da próxima turma"
+          }
         />
 
         <section className="bg-paper py-28 text-deep">
@@ -143,8 +156,8 @@ export default function FormacaoPage() {
               </div>
             ) : (
               <div className="mt-12 flex justify-center">
-                <Button variant="ink" href={inscricaoFormUrl} target="_blank" rel="noopener noreferrer">
-                  Quero estar na próxima turma
+                <Button variant="ink" href={ctaHref} target="_blank" rel="noopener noreferrer">
+                  {ctaLabel}
                   <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
                 </Button>
               </div>
@@ -152,13 +165,23 @@ export default function FormacaoPage() {
           </div>
         </section>
 
-        <ServiceCta
-          eyebrow="Turma 2 encerrada"
-          title="Garanta o seu lugar na Turma 3"
-          text="Cadastre-se para entrar na lista de espera. Previsão de abertura: 01/09/2026."
-          ctaLabel="Entrar na lista de espera"
-          ctaHref={inscricaoFormUrl}
-        />
+        {enrollmentOpen ? (
+          <ServiceCta
+            eyebrow="Turma 3 · Inscrições abertas"
+            title="Garanta o seu lugar na Turma 3"
+            text="Inscrições abertas até o dia 11/10/2026!"
+            ctaLabel="Garantir minha vaga"
+            ctaHref={checkoutUrl}
+          />
+        ) : (
+          <ServiceCta
+            eyebrow="Turma 3 encerrada"
+            title="Garanta o seu lugar na Turma 4"
+            text="Cadastre-se para entrar na lista de espera. Previsão de abertura: 01/02/2027."
+            ctaLabel="Entrar na lista de espera"
+            ctaHref={waitlistFormUrl}
+          />
+        )}
       </main>
     </>
   );

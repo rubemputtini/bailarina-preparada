@@ -2,7 +2,7 @@ import depManuela from "@/assets/depoimento-manuela.jpg";
 
 // Depoimentos de profissionais formados na Formação.
 // Adicione os depoimentos reais aqui — enquanto a lista estiver vazia, a seção
-// mostra apenas a chamada da rede com o botão de lista de espera.
+// mostra apenas a chamada da rede com o botão de inscrição (ou de lista de espera).
 export interface FormacaoTestimonial {
   quote: string;
   name: string;
