@@ -14,6 +14,10 @@
   --color-accent-soft: #dbcff1;
   --color-paper: #f7f5fb;
   --color-paper-deep: #eee9f6;
+
+  /* Black Friday do Clube */
+  --color-bf: #09080c;
+  --color-bf-panel: #121017;
 }
 
 @layer base {
@@ -60,4 +64,15 @@
 }
 .animate-fade-up {
   animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Black Friday do Clube: as seções atuais trocam os fundos roxos por preto */
+.bf-theme .bg-deep,
+.bf-theme .bg-ink {
+  background-color: var(--color-bf);
+}
+
+@keyframes bf-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.35; }
 }

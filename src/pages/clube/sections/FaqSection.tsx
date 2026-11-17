@@ -25,7 +25,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
   );
 }
 
-export function FaqSection() {
+export function FaqSection({ items = faqs }: { items?: { q: string; a: string }[] }) {
   return (
     <section className="bg-paper py-28 text-deep">
       <div className="container-site max-w-3xl">
@@ -34,7 +34,7 @@ export function FaqSection() {
           O que você precisa <em>saber</em>
         </h2>
         <div className="mt-12 border-t border-deep/10">
-          {faqs.map((faq) => (
+          {items.map((faq) => (
             <FaqItem key={faq.q} q={faq.q} a={faq.a} />
           ))}
         </div>
